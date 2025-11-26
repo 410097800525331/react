@@ -14,9 +14,10 @@
   <div id="root"></div>
   <script type="text/babel">
     // JSX
-    // 반드시 self-closing (닫는 태그 필요)
+    // 1. 반드시 self-closing (닫는 태그 필요)
     const element = <h1>Hello, world!</h1>;
     const img = <img src="logo.png" />;
+    const input2 = <input type="text" />;
     const element2 = <br />;
 
     /* 
@@ -43,20 +44,52 @@
         </>
       );
     }
+    function App2() {
+      // JSX는 반드시 하나의 부모 태그로 감싸야 합니다.
+      return (
+        // <></>: flagments 태그
+        <React.Fragments>
+          <div>
+            <h1>제목</h1>
+            <p>본문</p>
+          </div>
+          <div>
+            <h1>제목</h1>
+            <p>본문</p>
+          </div>
+        </React.Fragments>
+      );
+    }
+    function App3() {
+      // JSX는 반드시 하나의 부모 태그로 감싸야 합니다.
+      return (
+        <div>
+          <div>
+            <h1>제목</h1>
+            <p>본문</p>
+          </div>
+          <div>
+            <h1>제목</h1>
+            <p>본문</p>
+          </div>
+        </div>
+      );
+    }
 
-
-    // 속성 이름은 카멜 표기법으로
+    // 3. 속성 이름은 카멜 표기법으로
     // 예) className, htmlFor, tabIndex
     const div = <div className="box">내용</div>
     const lbl = <label htmlFor="inputId">이름</label>
+    const input3 = <input disabled />
+    const input4 = <input disabled={true} />
 
-    // JSX 안에서는 JavaScript 표현식을 {}로 감쌉니다.
+    // 4. JSX 안에서는 JavaScript 표현식을 {}로 감쌉니다.
     const name = "React";
     const element3 = <h1>{name} 배우기</h1>;  // 결과: <h1>React 배우기</h1>
     console.log(element3);
 
 
-    // 조건부 렌더링
+    // 4-1. 조건부 렌더링
     const isLoggedIn = false;
     const isAdmin = true;
 
@@ -65,13 +98,47 @@
     console.log(login);
     console.log(admin);
 
-    // style 속성은 객체 형태로 작성하고, CSS 속성명도 camelCase로 써야 합니다.
+    // 4-2. style 속성은 객체 형태로 작성하고, CSS 속성명도 camelCase로 써야 합니다.
     const style = { color: 'red', fontSize: '20px' };
     const element4 = <h1 style={style}>스타일 적용</h1>;
     // const element4 = <h1 style={{ color: 'red', fontSize: '20px' }}>스타일 적용</h1>;
 
+    // 4-3. 이벤트 핸들링
+    // doSomething 함수
+    // App4 컴포넌트
+    // function App4() {
+    //   // JS 영역
+    //   function doSomething() { alert('doSomething 함수'); }
+    //   return (
+    //     <>
+    //       {/* JSX 영역 주석: shoft+alt+a */}
+    //       <button onClick={doSomething}>Click</button>
+    //     </>
+    //   );
+    // }
+
+    // 5. 변수 출력
+    // const name2 = "Alice";
+    // function getGreeting(name) {
+    //   return `Hi, ${name}`;
+    // }
+
+    // <h2>{getGreeting("Tom")}</h2>
+    
+    function App7() {
+      const fruits = ['🍎', '🍌', '🍇'];
+
+      return (
+        <ul>
+          {fruits.map((fruit, index) => (
+            <li key={index}>{fruit}</li>
+          ))}
+        </ul>
+      )
+    }
+
     const root = ReactDOM.createRoot(document.querySelector('#root'));
-    root.render(element4)
+    root.render(<App7 />)
   </script>
 </body>
 
