@@ -1,5 +1,5 @@
 // 카드 데이터 배열
-const datas = [
+export const datas = [
   {
     rank: 1,
     poster: "img/YiSbqEf6OvFcDoLoQCipDojOHqMCwKG4_420.jpg",
