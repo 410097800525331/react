@@ -1,10 +1,9 @@
 import './css/reset.css'
 import './css/BoxOfficeCard.css'
-// import poster from './img/YiSbqEf6OvFcDoLoQCipDojOHqMCwKG4_420.jpg'
+// public 폴더에 이미지가 들어있을 때('/'로 시작)
+// import poster from '/img/YiSbqEf6OvFcDoLoQCipDojOHqMCwKG4_420.jpg'
+// src 폴더에 이미지가 들어있을 때('./'로 시작)
 // import mx4d from './img/type_mega_mx4d.png'
-// import cinema from './img/type_dolbycinema.png'
-// import atmos from './img/type_dolbyatmos.png'
-// import ageAll from './img/ALL_56x56.png'
 
 function BoxOfficeCard({data}) {
   // props
@@ -19,7 +18,7 @@ function BoxOfficeCard({data}) {
           </div>
           <div className="screen_type">
             {/* {data.screenTypes.map((ele, idx)=><img src={data.screenTypes[idx]} alt="screen types" />)} */}
-            {data.screenTypes.map(ele=><img src={ele} alt="screen types" />)}
+            {data.screenTypes.map(ele=><img key={ele} src={ele} alt="screen types" />)}
           </div>
           <div className="grade">
             <img src={data.grade} alt={"Movie Grade" + data.age} />
